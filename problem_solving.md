@@ -11,6 +11,6 @@
 - [dimensional analysis](https://en.wikipedia.org/wiki/Dimensional_analysis)
 
 ## Iteratively formalize (Dijkstra approach)
-- start from a "explicit enough" natural language description
+- start from an "explicit enough" natural language description
 - reformulate, introducing rigurous and consistent definitions
 - maintain concepts as generic as feasible, to ease finding approaches across different domains
