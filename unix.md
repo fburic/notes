@@ -16,6 +16,7 @@ wget -A FILE_PATTERN -r -np ftp://DIRECTORY
 
 * `-np` == "no parent" Apparently the recursive behaviour is also to go to parent directories.
   This prevents that.
+* `-r` - recursive
 
 ### Example
 `wget -A "example*.XML" -r -nv -np -nc ftp://ftp.example.com/data/`
