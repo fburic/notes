@@ -24,3 +24,26 @@ wget -A FILE_PATTERN -r -np ftp://DIRECTORY
 ### Other useful options
 * `-nv` == "non-verbose" (good for when saving log)
 * `-nc` - Does not check if target files already exist (overwrite)
+
+## Simple path bookmarking 
+
+* `bookmark` will move to the last bookmarked directory (via `pushd` so one can go back easily with `popd`).
+* `bookmark N` will move to bookmarked directory number `N`. 
+* `listbookmark` prints the numbered list of currrent bookmarks
+* `setbookmark` will append the current directory to the list of bookmakrs. This will become the defautl bookmark.
+* **TODO**: Ability to remove bookmark
+
+Add to `.bashrc` / `.profile`:
+
+```
+function bookmark {
+	if [[ -n "$1" ]]; then
+		pushd $(sed "$1q;d" ~/bookmark)
+	else
+		pushd $(tail -n 1 ~/bookmark)
+	fi
+	
+}
+alias setbookmark='pwd >> ~/bookmark'
+alias listbookmarks='nl ~/bookmark'
+```
