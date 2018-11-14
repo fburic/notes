@@ -42,7 +42,6 @@ function bookmark {
 	else
 		pushd $(tail -n 1 ~/bookmark)
 	fi
-	
 }
 alias setbookmark='pwd >> ~/bookmark'
 alias listbookmarks='nl ~/bookmark'
