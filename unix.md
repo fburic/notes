@@ -29,7 +29,7 @@ wget -A FILE_PATTERN -r -np ftp://DIRECTORY
 
 * `bookmark` will move to the last bookmarked directory (via `pushd` so one can go back easily with `popd`).
 * `bookmark N` will move to bookmarked directory number `N`. 
-* `listbookmark` prints the numbered list of currrent bookmarks
+* `listbookmarks` prints the numbered list of currrent bookmarks
 * `setbookmark` will append the current directory to the list of bookmakrs. This will become the defautl bookmark.
 * **TODO**: Ability to remove bookmark
 
