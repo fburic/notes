@@ -33,15 +33,15 @@ wget -A FILE_PATTERN -r -np ftp://DIRECTORY
 * `setbookmark` will append the current directory to the list of bookmakrs. This will become the defautl bookmark.
 * **TODO**: Ability to remove bookmark
 
-Add to `.bashrc` / `.profile`:
+Add to `.bashrc` or `.profile`:
 
 ```
 function bookmark {
-	if [[ -n "$1" ]]; then
-		pushd $(sed "$1q;d" ~/bookmark)
-	else
-		pushd $(tail -n 1 ~/bookmark)
-	fi
+     if [[ -n "$1" ]]; then
+          pushd $(sed "$1q;d" ~/bookmark)
+     else
+          pushd $(tail -n 1 ~/bookmark)
+     fi
 }
 alias setbookmark='pwd >> ~/bookmark'
 alias listbookmarks='nl ~/bookmark'
