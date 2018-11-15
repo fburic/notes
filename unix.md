@@ -27,6 +27,11 @@ wget -A FILE_PATTERN -r -np ftp://DIRECTORY
 
 ## Simple path bookmarking 
 
+Keeps track of paths by writing them to a file called `bookmark` in your home directory.
+Make sure you don't have a file with that name or change the commands below.
+
+**TODO** Make bookmark file name a variable instead of hardcoded.
+
 * `bookmark` will move to the last bookmarked directory (via `pushd` so one can go back easily with `popd`).
 * `bookmark N` will move to bookmarked directory number `N`. 
 * `listbookmarks` prints the numbered list of currrent bookmarks
