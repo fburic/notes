@@ -1,6 +1,8 @@
 
 ## `which` should not be used
 
+Use `type` and/or `command -v` instead. But see post below for caveats.
+
 It looks like `which` may not reflect actual files and paths and is a 
 "broken heritage from the C-Shell and is better left alone in Bourne-like shells."
 https://unix.stackexchange.com/questions/85249/why-not-use-which-what-to-use-then
