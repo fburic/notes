@@ -12,7 +12,7 @@ https://unix.stackexchange.com/questions/85249/why-not-use-which-what-to-use-the
 
 The ftp address does not support wildcards. One must give an "accept list" to `wget`
 
-```
+```bash
 wget -A FILE_PATTERN -r -np ftp://DIRECTORY
 ```
 
@@ -21,7 +21,9 @@ wget -A FILE_PATTERN -r -np ftp://DIRECTORY
 * `-r` - recursive
 
 ### Example
-`wget -A "example*.XML" -r -nv -np -nc ftp://ftp.example.com/data/`
+```bash
+wget -A "example*.XML" -r -nv -np -nc ftp://ftp.example.com/data/
+```
 
 ### Other useful options
 * `-nv` == "non-verbose" (good for when saving log)
@@ -31,33 +33,42 @@ wget -A FILE_PATTERN -r -np ftp://DIRECTORY
 
 Keeps track of paths by writing them to a file called `bookmark` in your home directory.
 
-**NOTE!** Make sure you don't have a file with that name or change the commands below.
+**NOTE !** Make sure you don't have a file with that name 
+or change the `BOOKMARK_FILE` env variable below.
 
-**TODO** Make bookmark file name a variable instead of hardcoded.
-
-* `bookmark` will move to the last bookmarked directory (via `pushd` so one can go back easily with `popd`).
-* `bookmark N` will move to bookmarked directory number `N`. 
+* `bookmark` moves to the last bookmarked directory (via `pushd` so one can go back easily with `popd`).
+* `bookmark N` moves to bookmarked directory number `N`. 
 * `listbookmarks` prints the numbered list of currrent bookmarks
-* `setbookmark` will append the current directory to the list of bookmakrs. This will become the default bookmark.
-* **TODO**: Ability to remove bookmark
+* `setbookmark` appends the current directory to the list of bookmakrs. This will become the default bookmark.
+* `rmbookmark` removes the last bookmarked directory.
+* `rmbookmark N` removes the bookmarked directory number `N`.
 
 Add to `.bashrc` or `.profile`:
 
-```
+```bash
+export BOOKMARK_FILE=~/bookmark
 function bookmark {
-     if [[ -n "$1" ]]; then
-          pushd $(sed "$1q;d" ~/bookmark)
-     else
-          pushd $(tail -n 1 ~/bookmark)
-     fi
+    if [[ -n "$1" ]]; then
+        pushd $(sed "$1q;d" ${BOOKMARK_FILE})
+    else
+        pushd $(tail -n 1 ${BOOKMARK_FILE})
+    fi
 }
-alias setbookmark='pwd >> ~/bookmark'
-alias listbookmarks='nl ~/bookmark'
+function rmbookmark {
+    if [[ -n "$1" ]]; then
+	sed -i "${1}d" ${BOOKMARK_FILE}
+    else
+	sed -i "$ d" ${BOOKMARK_FILE}
+    fi
+}
+alias setbookmark='pwd >> ${BOOKMARK_FILE}'
+alias listbookmarks='nl ${BOOKMARK_FILE}'
+
 ```
 
 ## Useful aliases
 
-```
+```bash
 alias lastfile="ls -t1 | head -n 1"
 alias timestamp='date "+%Y%m%d-%H%M%S"'
 ```
