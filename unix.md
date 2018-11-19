@@ -52,3 +52,10 @@ function bookmark {
 alias setbookmark='pwd >> ~/bookmark'
 alias listbookmarks='nl ~/bookmark'
 ```
+
+## Useful aliases
+
+```
+alias lastfile="ls -rt -1 | tail -n 2"
+alias timestamp='date "+%Y%m%d-%H%M%S"'
+```
