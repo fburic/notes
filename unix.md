@@ -56,6 +56,6 @@ alias listbookmarks='nl ~/bookmark'
 ## Useful aliases
 
 ```
-alias lastfile="ls -rt -1 | tail -n 2"
+alias lastfile="ls -t1 | head -n 1"
 alias timestamp='date "+%Y%m%d-%H%M%S"'
 ```
