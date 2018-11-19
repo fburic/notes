@@ -36,7 +36,7 @@ Keeps track of paths by writing them to a file called `bookmark` in your home di
 * `bookmark` will move to the last bookmarked directory (via `pushd` so one can go back easily with `popd`).
 * `bookmark N` will move to bookmarked directory number `N`. 
 * `listbookmarks` prints the numbered list of currrent bookmarks
-* `setbookmark` will append the current directory to the list of bookmakrs. This will become the defautl bookmark.
+* `setbookmark` will append the current directory to the list of bookmakrs. This will become the default bookmark.
 * **TODO**: Ability to remove bookmark
 
 Add to `.bashrc` or `.profile`:
