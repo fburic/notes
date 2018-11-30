@@ -7,6 +7,7 @@
 
 ## Characterize the problem 
 - scales of the entities involved
+- specify valid ranges for values
 - costs of operations
 - [dimensional analysis](https://en.wikipedia.org/wiki/Dimensional_analysis)
 
