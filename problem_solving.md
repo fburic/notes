@@ -8,8 +8,8 @@
 ## Characterize the problem 
 - scales of the entities involved
 - specify valid ranges for values
-- costs of operations
 - [dimensional analysis](https://en.wikipedia.org/wiki/Dimensional_analysis)
+- costs of operations
 
 ## Iteratively formalize
 1. start from an "explicit enough" natural language description
