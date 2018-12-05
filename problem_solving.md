@@ -16,5 +16,6 @@
 2. reformulate, introducing rigurous and consistent definitions
 3. maintain concepts as generic as feasible, to ease finding approaches across different domains
 
-Steps 1 and 2 are a simplified form of Dijkstra's approach to writing correct programs: [EWD241](https://www.cs.utexas.edu/~EWD/transcriptions/EWD02xx/EWD241.html), [EWD227](https://www.cs.utexas.edu/~EWD/transcriptions/EWD02xx/EWD227.html), ?
+Steps 1 and 2 are a simplified form of Dijkstra's approach to writing correct programs: [EWD241](https://www.cs.utexas.edu/~EWD/transcriptions/EWD02xx/EWD241.html), [EWD227](https://www.cs.utexas.edu/~EWD/transcriptions/EWD02xx/EWD227.html), ?.
+
 Step 3 is a personal opinion.
