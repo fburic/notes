@@ -66,9 +66,17 @@ alias listbookmarks='nl ${BOOKMARK_FILE}'
 
 ```
 
+
 ## Useful aliases
 
 ```bash
 alias lastfile="ls -t1 | head -n 1"
 alias timestamp='date "+%Y%m%d-%H%M%S"'
+```
+
+
+## Send message to another user
+
+```
+echo "Some text goes here" | write <user>
 ```
