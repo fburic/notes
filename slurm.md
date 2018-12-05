@@ -1,3 +1,5 @@
+# SLURM
+
 ## Interplay with Conda and Snakemake
 
 Loading `Anaconda3` and activating the environment needs to be **last** and preferably **only once**. Otherwise, the environment stops seeing packages, cannot be deactivated.
@@ -21,4 +23,20 @@ Loading `Anaconda3` and activating the environment needs to be **last** and pref
 ```
 sacct -o JobID,RSS,ReqMem,MaxVMSize,MaxRSS,MaxRSSTask,State,NodeList -j <JobID>
 sacct -j <jobid> -o jobid,jobname,state,exitcode,derivedexitcode
+```
+
+
+## Watch queue status
+
+```bash
+check_job_status(){
+    while :
+    do
+        echo "[ $(date "+%H:%M:%S") ]"
+        squeue -u $USER
+        # Go up 4 lines to overwrite
+        echo -e "\e[4A"
+        sleep 5
+    done
+}
 ```
