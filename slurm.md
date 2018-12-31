@@ -70,6 +70,3 @@ module load Anaconda3
 echo "module use .local/easybuild/modules/all/" >> ~/.bashrc
 ```
 
-### TODO
-
-* Make `module use` change permanent to avoid running it for each new bash session
