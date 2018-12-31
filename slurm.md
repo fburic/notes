@@ -40,3 +40,36 @@ check_job_status(){
     done
 }
 ```
+
+
+# Install Anaconda3 Lmod module for SLURM with EasyBuild
+
+**Assumption**: There is an EasyBuild config file for Anaconda3.
+One can search with `eb -S '^Anaconda3'`
+
+Start a fresh session (either with `ml purge` or new bash session),
+then run the instructions below.
+
+**NOTE!** Replace `projects` with your own project directory on the
+high-capacity storage partition.
+
+```bash
+# EasyBuild will download files and build the module in ~/.local
+# This process involves O(1e4) files so best use a symlink to
+# a high-capacity storage area
+mkdir projects/.local
+ln -s projects/.local .local
+
+module load EasyBuild/3.7.1
+eb Anaconda3-5.1.0.eb
+module use .local/easybuild/modules/all/
+
+module load Anaconda3
+
+# Add personal module at login
+echo "module use .local/easybuild/modules/all/" >> ~/.bashrc
+```
+
+### TODO
+
+* Make `module use` change permanent to avoid running it for each new bash session
