@@ -42,7 +42,7 @@ check_job_status(){
 ```
 
 
-# Install Anaconda3 Lmod module for SLURM with EasyBuild
+## Install Anaconda3 Lmod module for SLURM with EasyBuild
 
 **Assumption**: There is an EasyBuild config file for Anaconda3.
 One can search with `eb -S '^Anaconda3'`
