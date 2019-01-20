@@ -48,7 +48,7 @@ check_job_status(){
 One can search with `eb -S '^Anaconda3'`
 
 Start a fresh session (either with `ml purge` or new bash session),
-then run the instructions below.
+then run the instructions below from your home directory.
 
 **NOTE!** Replace `projects` with your own project directory on the
 high-capacity storage partition.
