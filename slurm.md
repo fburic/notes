@@ -61,6 +61,9 @@ the home directory but you could write the absolute path to the storage partitio
 mkdir projects/.local
 ln -s projects/.local .local
 
+# The .conda also gets largs so make sure to put it somewhere else
+ln -s projects/.conda .conda
+
 module load EasyBuild/3.7.1
 eb Anaconda3-5.1.0.eb
 module use .local/easybuild/modules/all/
