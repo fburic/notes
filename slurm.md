@@ -51,7 +51,8 @@ Start a fresh session (either with `ml purge` or new bash session),
 then run the instructions below from your home directory.
 
 **NOTE!** Replace `projects` with your own project directory on the
-high-capacity storage partition.
+high-capacity storage partition. Here I'm assuming `projects` is a symlink in
+the home directory but you could write the absolute path to the storage partition.
 
 ```bash
 # EasyBuild will download files and build the module in ~/.local
