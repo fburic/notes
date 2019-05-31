@@ -3,6 +3,15 @@
 https://stackoverflow.com/questions/30024437/applying-group-by-and-summarise-on-data-while-keeping-all-the-columns-info
 
 
+## Open file across SSH
+
+```r
+data <- read_csv( pipe( 'ssh <hostname> "cat path/to/file.csv"' ))
+```
+
+Further reading: https://cran.r-project.org/doc/manuals/R-data.html#Connections
+
+
 ## Locale errors on package install
 
 Quit R, add the env vars below to `.bashrc`, then either source it or start a new terminal session.
