@@ -2,8 +2,8 @@
 
 R:
 
-http://thug-r.life/post/2017-08-06-fuzzy-joining/
-https://channel9.msdn.com/Events/useR-international-R-User-conference/useR2016/Efficient-in-memory-non-equi-joins-using-datatable
+* (using `data.table`) https://channel9.msdn.com/Events/useR-international-R-User-conference/useR2016/Efficient-in-memory-non-equi-joins-using-datatable
+* (diff libraries) http://thug-r.life/post/2017-08-06-fuzzy-joining/
 
 Spark:
 
