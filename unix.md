@@ -66,6 +66,11 @@ alias listbookmarks='nl ${BOOKMARK_FILE}'
 
 ```
 
+## X11 forwarding
+
+* `X11 connection rejected because of wrong authentication.` Fix: https://unix.stackexchange.com/questions/215558/why-am-i-getting-this-message-from-xauth-timeout-in-locking-authority-file-ho
+
+
 
 ## Useful aliases
 
