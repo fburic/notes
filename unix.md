@@ -71,6 +71,10 @@ alias listbookmarks='nl ${BOOKMARK_FILE}'
 * `X11 connection rejected because of wrong authentication.` Fix: https://unix.stackexchange.com/questions/215558/why-am-i-getting-this-message-from-xauth-timeout-in-locking-authority-file-ho
 
 
+## Security
+
+* Reuse `ssh-agent` from previous session: https://unix.stackexchange.com/questions/439254/use-my-already-running-ssh-agent-process
+
 
 ## Useful aliases
 
