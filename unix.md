@@ -73,7 +73,34 @@ alias listbookmarks='nl ${BOOKMARK_FILE}'
 
 ## Security
 
-* Reuse `ssh-agent` from previous session: https://unix.stackexchange.com/questions/439254/use-my-already-running-ssh-agent-process
+### Reuse `ssh-agent` from previous session
+
+Setup: start an agent and record relevant env vars.
+
+```bash
+eval $(ssh-agent -s | tee agent.env)
+chmod go-rwx agent.env
+```
+
+Add to `.bsahrc`:
+
+```bash
+# Get env vars for recorded ssh-agent
+source agent.env
+
+if $(ps -p $SSH_AGENT_PID > /dev/null 2>&1)
+then
+    echo "Using existing ssh-agent instace"
+    source agent.env
+else
+    echo "Starting new ssh-agent"
+    eval $(ssh-agent -s | tee agent.env)
+fi
+```
+
+References:
+* https://unix.stackexchange.com/questions/439254/use-my-already-running-ssh-agent-process
+* http://rabexc.org/posts/using-ssh-agent
 
 
 ## Useful aliases
