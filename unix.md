@@ -90,7 +90,7 @@ source agent.env
 
 if $(ps -p $SSH_AGENT_PID > /dev/null 2>&1)
 then
-    echo "Using existing ssh-agent instace"
+    echo "Using existing ssh-agent instance"
     source agent.env
 else
     echo "Starting new ssh-agent"
