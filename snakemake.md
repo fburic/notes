@@ -21,22 +21,22 @@ and setting up some extra dummy rule is probably not worth it.
 ### Use flag files for commands with unknown  / undeterministic output
 
 ```make
-rule rule_X:
+rule boom:
     input:
         rules.A.output, rules.B.output
     output:
-        touch('rule_X.DONE')
+        touch('boom.DONE')
 ```
 
-Note that one can still later refer to `rules.rule_X.output`
+Note that one can still later refer to `rules.boom.output`
 
 ### Keep Snakefiles on the meta level
 
 Don't write processing Python code in the rules themselves unless it's a few one-liners.
 
 Why:
-* The purpose of a Snakefile is to specify the overall build workflow and it's should not be
-concerned with *how* steps execute, merely their input and output
+* The purpose of a Snakefile is to specify the overall build workflow (the "**what**") and it should not be
+concerned with **how** steps execute, merely their input and output
 * Modularization: The processing programs may change, but as long as their I/O is the same, 
 it makes not sense to change the Snakefile and it makes the pipeline less robust
 
