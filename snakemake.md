@@ -62,3 +62,14 @@ rule wtf:
 - The rule should 1:1 match output files with input (E.g. create  `output/NAME.out` for each `input/NAME.csv`.
 
 **Method**:  Create a wildcard association between dynamic input and output: https://stackoverflow.com/a/44590076/10725218
+
+
+## Draw dependency graph as ASCII
+
+Useful for debugging over ssh:
+
+```shell
+snakemake --forceall -s Snakefile --dag |  graph-easy --from=dot --as_ascii
+```
+
+Needs `graph-easy` installed: https://metacpan.org/pod/Graph::Easy
