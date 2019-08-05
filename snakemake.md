@@ -12,13 +12,13 @@ rule C:
         rules.A.output, rules.B.output,
 ```
 
-**Constraint:** Input rules must be defined before they're referenced.
+**Constraint:** Input rules must be *defined before* they're referenced.
 
 **Exception:** 
 The dummy `all` rule can't be used like this since it must come first in the file
 and setting up some extra dummy rule is probably not worth it.
 
-### Use flag files for commands with unknown  / undeterministic output
+### Use flag files for commands with unknown  / nondeterministic output
 
 ```make
 rule boom:
