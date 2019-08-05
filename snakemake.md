@@ -53,3 +53,12 @@ rule wtf:
     I was forced to do this since there's no other way
     """
 ```
+
+
+## Dynamic, matched input and output
+
+**Scenario**: 
+- The rule has many dynamic (unknown a priori) input files. (E.g. It should run only on a subset of `input/*.csv`, with the size determined programmatically)
+- The rule should 1:1 match output files with input (E.g. create  `output/NAME.out` for each `input/NAME.csv`.
+
+**Method**:  Create a wildcard association between dynamic input and output: https://stackoverflow.com/a/44590076/10725218
