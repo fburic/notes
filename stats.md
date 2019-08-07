@@ -1,5 +1,13 @@
 # Misc Notes on Statistics Topics
 
+
+## FDR
+
+* [Statistical significance for genomewide studies (Storey, Tibshirani, 2004)](https://www.pnas.org/content/100/16/9440)
+* Target-Decoy approach to peptide-spectrum matching  http://www.bioinfor.com/fdr-tutorial/
+
+
+
 ## Testing for classification significance
 
 https://stats.stackexchange.com/questions/185327/testing-for-classification-significance
