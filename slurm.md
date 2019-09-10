@@ -74,3 +74,7 @@ module load Anaconda3
 echo "module use .local/easybuild/modules/all/" >> ~/.bashrc
 ```
 
+
+## Lmod configuration (incl creating aliases for modules)
+
+https://lmod.readthedocs.io/en/latest/093_modulerc.html
