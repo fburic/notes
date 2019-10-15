@@ -16,7 +16,8 @@ rule C:
 
 **Exception:** 
 The dummy `all` rule can't be used like this since it must come first in the file
-and setting up some extra dummy rule is probably not worth it.
+and setting up some extra dummy rule is probably not worth it, plus wildcards can't be given
+as targets.
 
 ### Use flag files for commands with unknown  / nondeterministic output
 
@@ -54,6 +55,12 @@ rule wtf:
     """
 ```
 
+Note that the `messsage` clause defines a description to be displayed / logged during execution.
+It's not entirely appropariate for documentation.
+
+
+
+
 
 ## Dynamic, matched input and output
 
@@ -62,6 +69,16 @@ rule wtf:
 - The rule should 1:1 match output files with input (E.g. create  `output/NAME.out` for each `input/NAME.csv`.
 
 **Method**:  Create a wildcard association between dynamic input and output: https://stackoverflow.com/a/44590076/10725218
+
+
+## Sidestepping cyclical dependene situations
+
+It normally makes no sense to have cyclical relations and if this happens it nearly always
+points to an error in the specification structure.
+
+However, there may be legitimate reasons behind what Snakemake detects as cyclical.
+One way to sidestep the issues is to use the `params` clause instead of `input`.
+Obviously, consider carefully if this is necessary.
 
 
 ## Draw dependency graph as ASCII
