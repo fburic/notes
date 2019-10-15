@@ -40,6 +40,7 @@ Why:
 concerned with **how** steps execute, merely their input and output
 * Modularization: The processing programs may change, but as long as their I/O is the same, 
 it makes not sense to change the Snakefile and it makes the pipeline less robust
+* Less headache: processes with complicated input-output mappings can be encapsulated in a wrapper that focuses on the end results
 
 ### Document cryptic / surprising rules
 
