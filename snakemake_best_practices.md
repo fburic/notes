@@ -34,7 +34,7 @@ it makes not sense to change the Snakefile and it makes the pipeline less robust
 Instead of wrrestling an awkward tool that generates many files per input inside the Snakefile
 write a (maybe simple) wrapper for it in a Python module.
 
-That way: the Snakemake rule becomes 1:1, is easier to control, is cleaner (easier to understand and change), 
+That way: the Snakemake rule becomes 1:1, easier to control, cleaner (easier to understand and change), 
 and changing the wrapper behaviour is isolated from the Snakefile as long as you still output the relevant file.
 
 ```make
