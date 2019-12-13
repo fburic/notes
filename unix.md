@@ -1,5 +1,5 @@
 
-## `which` should not be used
+## The command `which` should not be used
 
 Use `type` and/or `command -v` instead. But see post below for caveats.
 
