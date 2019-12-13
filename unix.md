@@ -75,7 +75,7 @@ alias listbookmarks='nl ${BOOKMARK_FILE}'
 
 ### Reuse `ssh-agent` from previous session
 
-Setup: start an agent and record relevant env vars.
+Setup: from your home directory, start an agent and record relevant env vars.
 
 ```bash
 eval $(ssh-agent -s | tee agent.env)
