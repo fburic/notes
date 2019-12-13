@@ -80,9 +80,11 @@ Setup: from your home directory, start an agent and record relevant env vars.
 ```bash
 eval $(ssh-agent -s | tee agent.env)
 chmod go-rwx agent.env
+
+ssh-add ~/.ssh/id_rsa
 ```
 
-Add to `.bsahrc`:
+Add the following to `.bsahrc` to bind any new terminal session to the running agent:
 
 ```bash
 # Get env vars for recorded ssh-agent
