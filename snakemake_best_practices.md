@@ -58,7 +58,7 @@ rule boom:
     input:
         rules.A.output, rules.B.output
     output:
-        touch('boom.DONE')
+        touch('boom.done')
 ```
 
 Note that one can still later refer to `rules.boom.output`
