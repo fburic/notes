@@ -29,7 +29,7 @@ conda env export > datasci.yaml
 #### 1.2. Clean up the spec file
 The best way I find is to delete all packages that you didn’t install yourself, because these are dependencies that will be automatically installed anyway.
 
-The spec file will look like
+The spec file you just exported will initially look like:
 ```yaml
 name: datasci
 channels:
@@ -69,7 +69,6 @@ channels:
   - defaults
 dependencies:
   - numpy=1.14.3
-  - numpy-base=1.14.3
   - pandas=0.24.2
   - scipy=1.0.0
   - pip:
