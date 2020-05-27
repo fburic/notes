@@ -114,6 +114,7 @@ From: continuumio/miniconda3
 
 **Note** You need root privileges.
 This might take a while (~20 min), depending on how many packages you have and download times.
+Subsequent builds, when only the conda env spec changes, are faster because the base linux image is cached.
 
 ```bash
 sudo singularity --verbose build datasci.simg datasci.recipe
