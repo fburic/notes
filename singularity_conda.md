@@ -75,6 +75,9 @@ dependencies:
     - coloredlogs==10.0
 ```
 
+**Note** For *tensorflow*, make sure to include `cudatoolkit` and `cudnn`, with the versions appropriate for the *target system* (not you laptop, esp. since macOS only supports a subset of versions). In my case, I have `cudatoolkit=10.1.168` (matching the CUDA version on Vera) and `cudnn=7.6.5`.
+
+
 ### 2. Create a Singularity spec file (“recipe”)
 
 A template exists on Vera at `/apps/Singularity/conda-example.recipe`
@@ -126,7 +129,10 @@ The size of the image is on the order of GBs.  This could be reduced, but still 
 
 ### 4. Adjust slurm run commands to work with the image
 
+For *tensorflow*, make sure to `module load GCC/8.3.0 iccifort/2019.5.281 CUDA/10.1.168`  (or whatever version works for you)
+
 The way to run things from an image is
+
 ```bash
 singularity exec --nv datasci.simg COMMAND
 ```
