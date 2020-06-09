@@ -66,6 +66,22 @@ alias listbookmarks='nl ${BOOKMARK_FILE}'
 
 ```
 
+## Gnuplot 
+
+Pattern: `<DATA COLUMNS> | gnuplot -e "set term dumb; plot '-' with linespoints notitle"`
+
+Example:
+
+```bash
+cat -n <(grep "|-Score" slurm-1547670.out | cut -d ' ' -f 1,3) | gnuplot -e "set term dumb; plot '-' with linespoints notitle"
+```
+
+References:
+
+* https://www.datafix.com.au/BASHing/2019-06-21.html
+
+
+
 ## X11 forwarding
 
 * `X11 connection rejected because of wrong authentication.` Fix: https://unix.stackexchange.com/questions/215558/why-am-i-getting-this-message-from-xauth-timeout-in-locking-authority-file-ho
