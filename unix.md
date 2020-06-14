@@ -125,7 +125,7 @@ References:
 
 ```bash
 alias lastfile="ls -t1 | head -n 1"
-alias timestamp='date "+%Y%m%d-%H%M%S"'
+alias timestamp='date "+%Y%m%d_%H%M%S"'
 ```
 
 
