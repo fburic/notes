@@ -74,7 +74,7 @@ Examples
 
 ```bash
 # Ox
-tail -n+2 training.log | cut -d ',' -f 1,3 | gnuplot -e "set term dumb; plot '-' with linespoints pt 'o' notitle"
+tail -n+2 training.log | cut -d ',' -f 3 | gnuplot -e "set term dumb; plot '-' with linespoints pt 'o' notitle"
 
 # Vera
 ml load iccifort/2018.3.222-GCC-7.3.0-2.30 impi/2018.3.222 gnuplot/5.2.2
