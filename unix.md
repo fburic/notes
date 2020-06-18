@@ -68,12 +68,17 @@ alias listbookmarks='nl ${BOOKMARK_FILE}'
 
 ## Gnuplot 
 
-Pattern: `<DATA COLUMNS> | gnuplot -e "set term dumb; plot '-' with linespoints notitle"`
+Pattern: `<DATA COLUMNS> | gnuplot -e "set term dumb; plot '-' with linespoints pt 'o' notitle"`
 
-Example:
+Examples
 
 ```bash
-cat -n <(grep "|-Score" slurm-1547670.out | cut -d ' ' -f 1,3) | gnuplot -e "set term dumb; plot '-' with linespoints notitle"
+# Ox
+tail -n+2 training.log | cut -d ',' -f 1,3 | gnuplot -e "set term dumb; plot '-' with linespoints pt 'o' notitle"
+
+# Vera
+ml load iccifort/2018.3.222-GCC-7.3.0-2.30 impi/2018.3.222 gnuplot/5.2.2
+cat -n <(grep "|-Score" slurm-1547670.out | cut -d ' ' -f 1,3) | gnuplot -e "set term dumb; plot '-' with linespoints  pt 'o' notitle"
 ```
 
 References:
