@@ -2,8 +2,8 @@
 Singularity images can be thought of as virtual machines, except only encapsulating everything above the kernel (libraries, user files, etc.). They are also somewhat “transparent”, in that they can “see” the host environment in which they’re run. (This is slightly different from Docker).
 
 **The basic idea** is to create a Singularity image that contains:
-* a minimal Linux with conda pre-installed as base “layer”
-* all conda packages you want as an additional “layer”
+* a minimal Linux layer with conda pre-installed as base
+* all conda packages you want as an additional layer
 
 **NOTE** This guide does not cover including third-party software into your image, just packages you can install through conda. Other stuff will be added later.
 
