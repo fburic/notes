@@ -68,7 +68,7 @@ alias listbookmarks='nl ${BOOKMARK_FILE}'
 
 ## Gnuplot 
 
-Pattern: `<DATA COLUMNS> | gnuplot -e "set term dumb; plot '-' with linespoints pt 'o' notitle"`
+Pattern: `<DATA COLUMNS> | gnuplot -e "set term dumb; plot '-' with linespoints pt 'O' notitle"`
 
 Examples
 
