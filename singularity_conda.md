@@ -29,7 +29,7 @@ conda env export > datasci.yaml
 #### 1.2. Clean up the spec file
 The best way I find is to delete all packages that you didn’t install yourself, because these are dependencies that will be automatically installed anyway.
 
-The spec file you just exported will initially look like:
+The spec file you just exported will **initially** look like:
 ```yaml
 name: datasci
 channels:
@@ -59,7 +59,7 @@ Delete the `prefix` line entirely since it’s specific to the OS it was created
 
 In this case, I know I only installed `numpy, scipy, pandas, and coloredlogs` (the last one via `pip`).  
 
-Now the spec file should look like below. Obviously, one could just write it from scratch and update it, as packages are being added.
+Now the spec file should look **like below**. Obviously, one could just write it from scratch and update it, as packages are being added.
 ```yaml
 name: datasci
 channels:
