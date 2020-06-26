@@ -75,7 +75,7 @@ dependencies:
     - coloredlogs==10.0
 ```
 
-**Note** For *tensorflow*, make sure to include `cudatoolkit` and `cudnn`, with the versions appropriate for the *target system* (not you laptop, esp. since macOS only supports a subset of versions). In my case, I have `cudatoolkit=10.1.168` (matching the CUDA version on Vera) and `cudnn=7.6.5`.
+**Note** For *tensorflow*, make sure to include `cudatoolkit` and `cudnn`, with the versions appropriate for the *target system* (not your laptop, esp. since macOS only supports a subset of versions). In my case, I have `cudatoolkit=10.1.168` (matching the CUDA version on Vera) and `cudnn=7.6.5`.
 
 
 ### 2. Create a Singularity spec file (“recipe”)
