@@ -105,7 +105,7 @@ From: continuumio/miniconda3
     # Update conda (some versions are buggy: https://github.com/conda/conda/issues/9681)
     /opt/conda/bin/conda update conda
     # Install all packages in the provided spec file 
-    /opt/conda/bin/conda env update —name base —file datasci.yaml —prune
+    /opt/conda/bin/conda env update --name base --file datasci.yaml --prune
 
 %runscript
     exec “$@“
