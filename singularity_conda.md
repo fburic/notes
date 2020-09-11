@@ -170,6 +170,7 @@ Create a conda environment only to hold Snakemake (this will be used for all you
 module load Anaconda3
 conda env create --name snakemake
 source activate snakemake
+pip install snakemake
 ```
 
 Then, adapt your Snakefiles, such that you prepend Singulary execution to all commands.
