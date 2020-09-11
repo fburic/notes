@@ -159,3 +159,33 @@ Note that `my_project/solve_everything.py` are not files in the image, just regu
 
 See more here [Using software - C3SE](https://www.c3se.chalmers.se/documentation/software/#singularity)
 
+## Snakemake
+
+The intention from both tools is that Snakemake should run Singularity.
+So you need to run Snakemake normally (i.e. not from the image) and change the snakefiles.
+
+Create a conda environment only to hold Snakemake (this will be used for all your images):
+
+```bash
+module load Anaconda3
+conda env create --name snakemake
+source activate snakemake
+```
+
+Then, adapt your Snakefiles, such that you prepend Singulary execution to all commands.
+A nice pattern is:
+
+```python
+
+sing = config['singularity']    #  Just the string for your image. Here:  "singularity exec --nv datasci.simg"
+
+...
+
+rule run_commmand:
+...
+shell:
+    "{sing} COMMAND"
+```
+
+**Warning**: Don't name that top-level variable since it's a Snakemake (5.24) reserved word (a bug, most likely)
+and the Snakefile will crash.
