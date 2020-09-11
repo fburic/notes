@@ -173,7 +173,7 @@ source activate snakemake
 pip install snakemake
 ```
 
-Then, adapt your Snakefiles, such that you prepend Singulary execution to all commands.
+Then, adapt your snakefiles, by prepending the Singulary execution string to all commands.
 A nice pattern is:
 
 ```python
@@ -188,5 +188,5 @@ shell:
     "{sing} COMMAND"
 ```
 
-**Warning**: Don't name that top-level variable since it's a Snakemake (5.24) reserved word (a bug, most likely)
+**Warning**: Don't name that top-level variable "singularity" since it's a Snakemake (5.24) reserved word (a bug, most likely)
 and the Snakefile will crash.
