@@ -4,7 +4,7 @@ Sometimes I find myself wanting to quickly see heatmaps of matrices rather than 
 So I'd like to just evaluate a Jupyter cell like `In [1]: x` and have the heatmap displayed.
 A quick hack for this is to dynamically modify (i.e. monkeypatch) the `numpy.ndarray` to support a `seaborn.heatmap` representation.
 
-Here's how it works:
+**Here's how it works:**
 
 Jupyter uses IPython's [display](https://ipython.readthedocs.io/en/stable/api/generated/IPython.display.html#functions) functions to output the contents of objects using various formats (including HTML, Javascript, and images).
 
@@ -16,7 +16,7 @@ However, one can't redefine `numpy.ndarray.__repr__` since numpy uses C data str
 
 [Forbidden Fruit](https://github.com/clarete/forbiddenfruit) is a package that allows extending built-in types. To quote the doc: "If that's a good idea or not, you tell me."
 
-To make it work in a notebook:
+**To make it work in a notebook:*
 
 ```python
 import numpy as np
