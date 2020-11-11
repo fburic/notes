@@ -33,7 +33,9 @@ curse(np.ndarray, "_repr_html_", repr_ndarray_as_heatmap)
 ```
 
 To undo this, run 
-```python reverse(np.ndarray, "_repr_html_")```
+```python 
+reverse(np.ndarray, "_repr_html_")
+```
 
 **Note** Reimporting the numpy module doesn't seem to rever the change. Might be best to just restart the kernel in some cases.
 This looks like a pretty irresopnsible approach so it's only recommended for notebooks and inspecting data.
