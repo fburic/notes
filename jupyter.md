@@ -16,7 +16,7 @@ However, one can't redefine `numpy.ndarray.__repr__` since numpy uses C data str
 
 [Forbidden Fruit](https://github.com/clarete/forbiddenfruit) is a package that allows extending built-in types. To quote the doc: "If that's a good idea or not, you tell me."
 
-**To make it work in a notebook:*
+**To make it work in a notebook:**
 
 ```python
 import numpy as np
