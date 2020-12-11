@@ -16,7 +16,7 @@ def printwide(*args):
 ```python
 from IPython.display import display_html
 
-def df_display_side_by_side(*args):
+def display_df_horiz(*args):
     html_str = ''
     for df in args:
         html_str += df.to_html()
