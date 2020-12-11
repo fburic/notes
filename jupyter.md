@@ -1,4 +1,30 @@
-## Display NumPy arrays as heatmaps
+## Customized display for various data structures
+
+### Display horizontally scrolling wide lines of text
+
+```python
+from IPython.display import display, HTML
+from pprint import pformat
+
+def printwide(*args):
+    strings = [str(a) for a in args]
+    print_block = '\n'.join(strings)
+    display(HTML('<pre style="white-space: pre !important;">{}</pre>'.format(print_block)))
+```
+
+### Display Pandas dataframes side-by-side
+
+```python
+from IPython.display import display_html
+
+def df_display_side_by_side(*args):
+    html_str = ''
+    for df in args:
+        html_str += df.to_html()
+    display_html(html_str.replace('table', 'table style="display:inline; padding:10px"'), raw=True)
+```
+
+### Display NumPy arrays as heatmaps
 
 Sometimes I find myself wanting to quickly see heatmaps of matrices rather than their numerical values.
 So I'd like to just evaluate a Jupyter cell like `In [1]: x` and have the heatmap displayed.
