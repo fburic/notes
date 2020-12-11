@@ -4,7 +4,6 @@
 
 ```python
 from IPython.display import display, HTML
-from pprint import pformat
 
 def printwide(*args):
     strings = [str(a) for a in args]
