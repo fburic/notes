@@ -29,3 +29,24 @@ export LC_ALL="en_US.UTF-8"
 ```
 
 https://stackoverflow.com/questions/27299420/how-to-get-rid-of-warning-messages-after-installing-r/28163310
+
+
+## Conda chunk wrapper
+
+```r
+conda_engine <- function(options) {
+    options$engine = "bash"
+    options$engine.opts = "-i"
+    options$code = paste(paste0("conda activate ", options$env),
+                         options$code, sep = "\n")
+    knitr::knit_engines$get("bash")(options)
+}
+
+knitr::knit_engines$set(conda = conda_engine)
+```
+ 
+```
+```{conda, env="sequencing"}
+tree
+```
+```
