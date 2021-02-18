@@ -5,7 +5,8 @@ Singularity images can be thought of as virtual machines, except only encapsulat
 * a minimal Linux layer with conda pre-installed as base
 * all conda packages you want as an additional layer
 
-**NOTE** This guide does not cover including third-party software into your image, just packages you can install through conda. Other stuff will be added later.
+**NOTE** This guide does not cover including third-party software into your image, just packages you can install through the package managers conda, pip, and apt.
+Other stuff will be added later.
 
 
 ## Setup
