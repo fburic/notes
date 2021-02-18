@@ -53,7 +53,8 @@ dependencies:
 prefix: /Users/fburic/miniconda3/envs/datasci
 ```
 
-Delete all packages you don’t remember installing, but keep the first version number. All those version numbers past the second `=` are specific to the OS and python version. It’s best to just remove them. **Careful** that pip expects a double `==`. 
+Delete all packages you don’t remember installing, but keep the first version number. All those version numbers past the second `=` are specific to the OS and python version. It’s best to just remove them. 
+**Careful** that pip expects a double `==`, while conda acccepts single `=` as approximate (x.y.*) match (see more [here](https://docs.conda.io/projects/conda-build/en/latest/resources/package-spec.html#package-match-specifications)).
 
 Delete the `prefix` line entirely since it’s specific to the OS it was created from.
 
