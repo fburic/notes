@@ -1,4 +1,6 @@
 # Creating Singularity images for conda environments: quick guide
+## Updated 2021-04-14
+
 Singularity images can be thought of as virtual machines, except only encapsulating everything above the kernel (libraries, user files, etc.). They are also somewhat “transparent”, in that they can “see” the host environment in which they’re run. (This is slightly different from Docker).
 
 **The basic idea** is to create a Singularity image that contains:
@@ -16,8 +18,9 @@ We’ll be creating an image for an environment called `datasci`
 **Important Note** The more complex the spec file is, the less likely it is to be successfully built. 
 
 There are 2 ways to obtain simple/clean spec files:
-1. create it by hand (easier if the environment has few packages)
-2. clean the exported spec file from the existing environment
+
+1. Create it by hand (easier if the environment has few packages). You can also use the command `conda env export --from-history` to output only the pacakges you asked for in an existing environment, though some cleanup might still be needed. See [here](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#exporting-an-environment-file-across-platforms)
+2. Clean the exported spec file from the existing environment
 
 Here I’ll show **option 2** since it has a few extra steps:
 
@@ -77,7 +80,12 @@ dependencies:
     - coloredlogs==10.0
 ```
 
-**Note** For *tensorflow*, make sure to include `cudatoolkit` and `cudnn`, with the versions appropriate for the *target system* (not your laptop, esp. since macOS only supports a subset of versions). In my case, I have `cudatoolkit=10.1.168` (matching the CUDA version on Vera) and `cudnn=7.6.5`.
+**Notes** 
+
+1.  For *tensorflow*, make sure to include `cudatoolkit` and `cudnn`, with the versions appropriate for the *target system* (not your laptop, esp. since macOS only supports a subset of versions). In my case, I have `cudatoolkit=10.1.168` (matching the CUDA version on Vera) and `cudnn=7.6.5`.
+
+2. Having a new pip solves some issues with packages and dependencies. So adding e.g. `pip==21.0.1` to the conda dependencies might be a good idea.
+
 
 
 ### 2. Create a Singularity spec file (“recipe”)
@@ -87,7 +95,7 @@ This is a slightly adjusted version, that allows installing packages from a spec
 
 ```yaml
 Bootstrap: docker
-From: continuumio/miniconda3
+From: continuumio/miniconda3:4.8.3
 
 %files
     datasci.yaml
@@ -104,9 +112,7 @@ From: continuumio/miniconda3
     touch /usr/lib64/libvglfaker.so
     touch /usr/bin/nvidia-smi
 
-    # Update conda (some versions are buggy: https://github.com/conda/conda/issues/9681)
-    /opt/conda/bin/conda update conda
-    # Install all packages in the provided spec file 
+    # Install all packages from the provided spec file into the global conda env
     /opt/conda/bin/conda env update --name base --file datasci.yaml --prune
 
 %runscript
@@ -114,6 +120,8 @@ From: continuumio/miniconda3
 ```
 
 **Careful** that you include the spec file with the `%files`  directive. If files aren’t copied into the image, they’re not visible to the building process. Building proceeds in 2 steps: installing the miniconda3 linux+conda, then running all commands in `%post`, including the conda commands.
+
+If you need **extra software** in the image (e.g. package dependencies), remember that the base image is just an Ubuntu system, so you can install software with `apt`. For example, adding the command `apt-get update && apt install -y --no-install-recommends build-essential` above the conda line will first install compilation tools (`gcc`, `make`, etc.) that some conda packages require.
 
 ### 3. Create the singularity image
 
@@ -142,12 +150,15 @@ singularity exec --nv datasci.simg COMMAND
 See more here [Quick Start — Singularity container 3.4 documentation](https://sylabs.io/guides/3.4/user-guide/quick_start.html)
 
 **Notes**
-* `—nv` uses NVIDIA drivers
+* `—-nv` uses NVIDIA drivers
 * COMMAND runs stuff **inside** the image, but can still “interact” with the host environment (i.e. can access files on the host OS)
 * To run **bash commands**, COMMAND should be `bash -c "command"` 
 * Unless configured differently in the Singularity spec file, the `$PATH` and other **environment variables will be different** than the ones on the host OS. Use a bash call to first set up needed env vars, then run your program, e.g. e.g. `bash -c “export PATH=$PATH:/my/path && python my_script.py`
 
 So simply prepend the singularity part to your batch scripts, e.g.:
+
+
+### Example 1: Running a Python script
 
 ```bash
 #!/bin/bash
@@ -159,7 +170,58 @@ singularity exec --nv datasci.simg python my_project/solve_everything.py
 
 Note that `my_project/solve_everything.py` are not files in the image, just regularly stored files on the host OS. 
 
+
+### Example 2: Running any program inside the image  
+
+```bash
+singularity exec --nv DeepTranslation.sif bash -c "COMMAND"
+```
+
+This ensures it's the command inside the image, not the host system.
+
+### Example 3: Wrapper scripts
+
+`run_python.sh my_scipt.py`
+
+```bash
+#!/bin/bash
+
+#SBATCH --time 12:00:00
+#SBATCH --ntasks 64
+
+module load GCC/8.3.0  CUDA/10.1.243
+
+date
+hostname
+
+time singularity exec --nv DeepTranslation.sif python $*
+```
+
+The $* just passes through any arguments to the script, i.e. `my_script.py` and anything following it (including any arguments)
+
+`run_command_with_singularity.sh COMMAND`
+
+```bash
+#!/bin/bash
+
+#SBATCH --time 12:00:00
+#SBATCH --ntasks 64
+
+module load GCC/8.3.0  CUDA/10.1.243
+
+date
+hostname
+
+time singularity exec --nv DeepTranslation.sif bash -c "$*"
+```
+
+
+### Further reading
+
 See more here [Using software - C3SE](https://www.c3se.chalmers.se/documentation/software/#singularity)
+
+
+
 
 ## Snakemake
 
