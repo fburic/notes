@@ -126,6 +126,21 @@ References:
 * http://rabexc.org/posts/using-ssh-agent
 
 
+## rsync with jump
+
+```bash
+rsync -azv -e 'ssh -A -J USER@PROXYHOST:PORT' foo/ dest:./foo/
+```
+
+`-J (ProxyJump)` 
+
+if your version of ssh is new enough (OpenSSH >= v7.3)
+
+"Note that I'm using -A (agent forwarding) but it should also work with password authentication if you don't use keys, and, of course, you can replace proxy with B and dest with C in your example."
+
+Source: https://superuser.com/a/1115998
+
+
 ## Useful aliases
 
 ```bash
