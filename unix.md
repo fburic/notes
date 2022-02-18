@@ -146,6 +146,7 @@ Source: https://superuser.com/a/1115998
 ```bash
 alias lastfile="ls -t1 | head -n 1"
 alias timestamp='date "+%Y%m%d_%H%M%S"'
+alias e='emacs -nw'
 ```
 
 
