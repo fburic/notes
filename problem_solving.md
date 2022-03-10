@@ -1,7 +1,7 @@
 # Approaches to Problem Solving
 
 ## Check assumptions!
-- identify and list all assumptions, event trivial ones
+- identify and list all assumptions, even trivial ones
 - are you solving the right problem?
 - be careful about "intuitive truths"
 
