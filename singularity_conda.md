@@ -130,7 +130,7 @@ This might take a while (~20 min), depending on how many packages you have and d
 Subsequent builds, when only the conda env spec changes, are faster because the base linux image is cached.
 
 ```bash
-sudo singularity --verbose build datasci.simg datasci.recipe
+sudo singularity --verbose build datasci.sif datasci.recipe
 ```
 
 Then all you need is the image file. Just copy it to Vera.
@@ -144,7 +144,7 @@ For *tensorflow*, make sure to `module load GCC/8.3.0 iccifort/2019.5.281 CUDA/1
 The way to run things from an image is
 
 ```bash
-singularity exec --nv datasci.simg COMMAND
+singularity exec --nv datasci.sif COMMAND
 ```
 
 See more here [Quick Start — Singularity container 3.4 documentation](https://sylabs.io/guides/3.4/user-guide/quick_start.html)
@@ -165,7 +165,7 @@ So simply prepend the singularity part to your batch scripts, e.g.:
 #SBATCH -t 0:30:00
 #SBATCH -A **project_ID**
 
-singularity exec --nv datasci.simg python my_project/solve_everything.py
+singularity exec --nv datasci.sif python my_project/solve_everything.py
 ```
 
 Note that `my_project/solve_everything.py` are not files in the image, just regularly stored files on the host OS. 
@@ -174,7 +174,7 @@ Note that `my_project/solve_everything.py` are not files in the image, just regu
 ### Example 2: Running any program inside the image  
 
 ```bash
-singularity exec --nv DeepTranslation.sif bash -c "COMMAND"
+singularity exec --nv datasci.sif bash -c "COMMAND"
 ```
 
 This ensures it's the command inside the image, not the host system.
@@ -194,7 +194,7 @@ module load GCC/8.3.0  CUDA/10.1.243
 date
 hostname
 
-time singularity exec --nv DeepTranslation.sif python $*
+time singularity exec --nv datasci.sif python $*
 ```
 
 The $* just passes through any arguments to the script, i.e. `my_script.py` and anything following it (including any arguments)
@@ -212,7 +212,7 @@ module load GCC/8.3.0  CUDA/10.1.243
 date
 hostname
 
-time singularity exec --nv DeepTranslation.sif bash -c "$*"
+time singularity exec --nv datasci.sif bash -c "$*"
 ```
 
 
@@ -242,7 +242,7 @@ A nice pattern is:
 
 ```python
 
-sing = config['singularity']    #  Just the string for your image. Here:  "singularity exec --nv datasci.simg"
+sing = config['singularity']    #  Just the string for your image. Here:  "singularity exec --nv datasci.sif"
 
 ...
 
